@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hSf3LtgeBWUOrlQhO+/yavUh7oulRq8LFk67Nj6DEGULOm/c2hClmwE7gCWGk0+18vD7dYC2d/egUo6pDidHHw==",
+  "dgSpecHash": "BqldVJuJtpDhdZ+PZfeQQajbnu37chesFMV4KvYnjXUUvdwvNSVxlMa6HjvaOAEFgbyjGEcUv2XRRhQ8g1KbIQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Charley\\source\\repos\\CDRBIP\\CDRBIP\\CDRBIP\\CDRBIP.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,7 @@
     "C:\\Users\\Charley\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.11\\microsoft.entityframeworkcore.5.0.11.nupkg.sha512",
     "C:\\Users\\Charley\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.11\\microsoft.entityframeworkcore.abstractions.5.0.11.nupkg.sha512",
     "C:\\Users\\Charley\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.11\\microsoft.entityframeworkcore.analyzers.5.0.11.nupkg.sha512",
+    "C:\\Users\\Charley\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\5.0.11\\microsoft.entityframeworkcore.inmemory.5.0.11.nupkg.sha512",
     "C:\\Users\\Charley\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.11\\microsoft.entityframeworkcore.relational.5.0.11.nupkg.sha512",
     "C:\\Users\\Charley\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\5.0.11\\microsoft.entityframeworkcore.sqlserver.5.0.11.nupkg.sha512",
     "C:\\Users\\Charley\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",

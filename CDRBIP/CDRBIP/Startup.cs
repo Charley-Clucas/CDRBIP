@@ -1,3 +1,4 @@
+using CDRBIP.Modules.CallDetailRecordManagement.Application.Generic;
 using CDRBIP.Modules.CallDetailRecordManagement.Infrastructure.Database;
 using CDRBIP.Modules.CallDetailRecordManagement.Infrastructure.Processing;
 using MediatR;
@@ -49,8 +50,9 @@ namespace CDRBIP
 
             services.AddScoped<ICallDetailRecordContext, CallDetailRecordContext>();
             services.AddTransient<RetrieveCDRFileJob>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddMediatR(typeof(Startup).Assembly)
-                .AddDbContext<CallDetailRecordContext>(options => options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Test"));
+                .AddDbContext<CallDetailRecordContext>(options => options.UseInMemoryDatabase(databaseName: "CDRBIP"));
 
             services.AddQuartzServer(options =>
             {

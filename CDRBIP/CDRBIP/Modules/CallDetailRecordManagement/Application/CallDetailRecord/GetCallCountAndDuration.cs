@@ -1,5 +1,6 @@
 ﻿using CDRBIP.Modules.CallDetailRecordManagement.Application.Generic;
 using CDRBIP.Modules.CallDetailRecordManagement.Domain;
+using CDRBIP.Modules.CallDetailRecordManagement.Domain.Dtos;
 using MediatR;
 using System.Collections.Generic;
 using System.Threading;
@@ -7,16 +8,14 @@ using System.Threading.Tasks;
 
 namespace CDRBIP.Modules.CallDetailRecordManagement.Application.CallDetailRecord
 {
-    public class GetMostExpensiveCalls
+    public class GetCallCountAndDuration
     {
-        public class Query : IRequest<IEnumerable<Domain.CallDetailRecord>>
+        public class Query : IRequest<IEnumerable<CallCountAndDurationDto>>
         {
-            public long CallerId { get; set; }
-            public int RequestedAmount { get; set; }
             public CallType? CallType { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, IEnumerable<Domain.CallDetailRecord>>
+        public class Handler : IRequestHandler<Query, IEnumerable<CallCountAndDurationDto>>
         {
             private readonly IUnitOfWork _unitOfWork;
 
@@ -25,9 +24,10 @@ namespace CDRBIP.Modules.CallDetailRecordManagement.Application.CallDetailRecord
                 _unitOfWork = unitOfWork;
             }
 
-            public async Task<IEnumerable<Domain.CallDetailRecord>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<IEnumerable<CallCountAndDurationDto>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _unitOfWork.CallDetailRecords.GetMostExpensiveCalls(request.CallerId, request.RequestedAmount, request.CallType, cancellationToken);
+
+                return await _unitOfWork.CallDetailRecords.GetCallCountAndDuration(request.CallType, cancellationToken);
             }
         }
     }

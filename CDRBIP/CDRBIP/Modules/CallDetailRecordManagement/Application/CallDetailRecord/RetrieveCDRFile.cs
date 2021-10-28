@@ -3,6 +3,7 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.TypeConversion;
 using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -36,11 +37,13 @@ namespace CDRBIP.Modules.CallDetailRecordManagement.Application.CallDetailRecord
                     return 0;
                 }
 
+                var goodRecords = new List<Domain.CallDetailRecord>();
+                var badRecords = new List<string>();
+                var isRecordBad = false;
+
                 using (var reader = new StreamReader(@"SampleCsv\techtest_cdr_dataset.csv"))
                 {
-                    var goodRecords = new List<Domain.CallDetailRecord>();
-                    var badRecords = new List<string>();
-                    var isRecordBad = false;
+                    
 
                     using (var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture))
                     {
@@ -79,15 +82,20 @@ namespace CDRBIP.Modules.CallDetailRecordManagement.Application.CallDetailRecord
                                 }
                             }
                         }
-
-                        await _callDetailRecordContext.CallDetailRecords.AddRangeAsync(goodRecords, cancellationToken);
-                        await _callDetailRecordContext.SaveChangesAsync(cancellationToken);
-
-                        File.Delete(@"SampleCsv\techtest_cdr_dataset.csv");
-
-                        return goodRecords.Count;
+                        try
+                        {
+                            await _callDetailRecordContext.CallDetailRecords.AddRangeAsync(goodRecords, cancellationToken);
+                            await _callDetailRecordContext.SaveChangesAsync(cancellationToken);
+                        }
+                        catch (System.Exception x)
+                        {
+                            throw x;
+                        }
                     }
                 }
+                File.Delete(@"SampleCsv\techtest_cdr_dataset.csv");
+                return goodRecords.Count;
+
             }
 
             public class CallDetailRecordMap : ClassMap<Domain.CallDetailRecord>

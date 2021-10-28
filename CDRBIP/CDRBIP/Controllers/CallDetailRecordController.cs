@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace CDRBIP.Controllers
 {
+    [ApiController]
     [Route("/api/[controller]")]
     public class CallDetailRecordController : Controller
     {
@@ -15,10 +16,32 @@ namespace CDRBIP.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create(Create.Command request)
+        [HttpGet]
+        [Route("GetByCallerId")]
+        public async Task<IActionResult> GetByCallerId([FromQuery] GetAllByCallerId.Query query)
         {
-            return Ok(await _mediator.Send(request));
+            return Ok(await _mediator.Send(query));
+        }
+
+        [HttpGet]
+        [Route("GetByReference")]
+        public async Task<IActionResult> GetByReference([FromQuery] GetByReference.Query query)
+        {
+            return Ok(await _mediator.Send(query));
+        }
+
+        [HttpGet]
+        [Route("GetMostExpensiveCalls")]
+        public async Task<IActionResult> GetMostExpensiveCalls([FromQuery] GetMostExpensiveCalls.Query query)
+        {
+            return Ok(await _mediator.Send(query));
+        }
+
+        [HttpGet]
+        [Route("GetCallCountAndDuration")]
+        public async Task<IActionResult> GetCallCountAndDuration([FromQuery] GetCallCountAndDuration.Query query)
+        {
+            return Ok(await _mediator.Send(query));
         }
     }
 }

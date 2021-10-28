@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace CDRBIP.Modules.CallDetailRecordManagement.Domain
 {
@@ -10,6 +11,7 @@ namespace CDRBIP.Modules.CallDetailRecordManagement.Domain
         public DateTime EndTime { get; set; }
         public int Duration { get; set; }
         public double Cost { get; set; }
+        [Key]
         public string Reference { get; set; }
         public string Currency { get; set; }
         public CallType Type { get; set; }

@@ -1,7 +1,5 @@
-﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using CDRBIP.Modules.CallDetailRecordManagement.Application.Generic;
+using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,22 +7,24 @@ namespace CDRBIP.Modules.CallDetailRecordManagement.Application.CallDetailRecord
 {
     public class GetByReference
     {
-        public class Query : IRequest<CallDetailRecordDto>
+        public class Query : IRequest<Domain.CallDetailRecord>
         {
-
+            public string Reference { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, CallDetailRecordDto>
+        public class Handler : IRequestHandler<Query, Domain.CallDetailRecord>
         {
-            public async Task<CallDetailRecordDto> Handle(Query request, CancellationToken cancellationToken)
+            private readonly IUnitOfWork _unitOfWork;
+
+            public Handler(IUnitOfWork unitOfWork)
             {
-                throw new NotImplementedException();
+                _unitOfWork = unitOfWork;
             }
-        }
 
-        public class CallDetailRecordDto
-        {
-
+            public async Task<Domain.CallDetailRecord> Handle(Query request, CancellationToken cancellationToken)
+            {
+                return await _unitOfWork.CallDetailRecords.GetByReference(request.Reference, cancellationToken);
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ namespace CDRBIP.Modules.CallDetailRecordManagement.Infrastructure.Database
             :base(options)
         {
         }
-
+       
         //Entities
         public DbSet<CallDetailRecord> CallDetailRecords { get; set; }
 
