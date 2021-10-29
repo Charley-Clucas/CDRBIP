@@ -29,8 +29,7 @@ I have also assumed that users will have their own process to retrieve 'bad reco
 You can download the source code from this repository. If you have Visual Studio you can simply run this API locally using Visual Studio via IIS Express.
 
 If you do not have or want to use Visual Studio you can run this API using command line, ensure you are in the same directory as the CDRBIP project and run:
-> dotnet watch run
-for this to work you require the dotnet SDK.
+> dotnet watch run (for this to work you require the dotnet SDK.)
 
 Once the application is up and running locally you should now replicate the file upload process that users will go through.
 
@@ -42,13 +41,17 @@ In a couple of seconds you should see that your .csv file will be replaced with 
 A good way to test that this all worked as you expect is to make some calls to the API endpoints. Please use the following payloads:
 
 	Retrieve individual CDR by the CDR Reference:
-		https://localhost:5001/api/calldetailrecord/GetByReference/?reference={reference}
+		https://localhost:{port}/api/calldetailrecord/GetByReference/?reference={reference}
+
 	Retrieve a count and total duration of all calls in a specified time period
-		https://localhost:5001/api/calldetailrecord/GetCallCountAndDuration/?callType={1/2}
+		https://localhost:{port}/api/calldetailrecord/GetCallCountAndDuration/?callType={1/2}
+
 	Retrieve all CDRs for a specific Caller ID in a specified time period.
-		https://localhost:5001/api/calldetailrecord/GetByCallerId/?callerId={callerId}
+		https://localhost:{port}/api/calldetailrecord/GetByCallerId/?callerId={callerId}
+
 	Retrieve N most expensive calls, in GBP, for a specific Caller ID
-		https://localhost:5001/api/calldetailrecord/GetMostExpensiveCalls/?callerId={callerid}&requestedAmount={requestedamount}&callType={1/2}
+		https://localhost:{port}/api/calldetailrecord/GetMostExpensiveCalls/?callerId={callerid}&requestedAmount={requestedamount}&callType={1/2}
+
 
 Where you see {X} replace the brackets and their contents with your data.
 
