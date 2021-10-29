@@ -22,7 +22,7 @@ namespace CDRBIP.Modules.CallDetailRecordManagement.Application.CallDetailRecord
             timePeriodLimit = DateTime.Today.AddDays(-30);
         }
 
-        public async Task<IEnumerable<Domain.CallDetailRecord>> GetAllByCallerId(long callerId, CancellationToken cancellationToken)
+        public async Task<List<Domain.CallDetailRecord>> GetAllByCallerId(long callerId, CancellationToken cancellationToken)
         {
             var result = await _context.CallDetailRecords
                 .Where(c => c.CallerId == callerId && c.CallDate >= timePeriodLimit)
@@ -45,7 +45,7 @@ namespace CDRBIP.Modules.CallDetailRecordManagement.Application.CallDetailRecord
             return callDetailLogToReturn;
         }
 
-        public async Task<IEnumerable<CallCountAndDurationDto>> GetCallCountAndDuration(CallType? callType, CancellationToken cancellationToken)
+        public async Task<List<CallCountAndDurationDto>> GetCallCountAndDuration(CallType? callType, CancellationToken cancellationToken)
         {
             if (callType == null)
             {
@@ -73,7 +73,7 @@ namespace CDRBIP.Modules.CallDetailRecordManagement.Application.CallDetailRecord
             return resultWithFilter;
         }
 
-        public async Task<IEnumerable<Domain.CallDetailRecord>> GetMostExpensiveCalls(long callerId, int requestedAmount, CallType? callType, CancellationToken cancellationToken)
+        public async Task<List<Domain.CallDetailRecord>> GetMostExpensiveCalls(long callerId, int requestedAmount, CallType? callType, CancellationToken cancellationToken)
         {
             //No filter provided
             if (callType == null)
@@ -91,6 +91,28 @@ namespace CDRBIP.Modules.CallDetailRecordManagement.Application.CallDetailRecord
                     .OrderByDescending(c => c.Cost)
                     .Take(requestedAmount)
                     .ToListAsync(cancellationToken);
+        }
+
+        public async Task<IEnumerable<Domain.CallDetailRecord>> SaveCDRFileRecords(IEnumerable<Domain.CallDetailRecord> recordsToInsert, CancellationToken cancellationToken)
+        {
+            var allRecords = await _context.CallDetailRecords.ToListAsync();
+            var duplicateCallDetailRecords = new List<Domain.CallDetailRecord>();
+
+            foreach(var recordToInsert in recordsToInsert)
+            {
+                if (allRecords.Any(x => x.Reference == recordToInsert.Reference))
+                {
+                    duplicateCallDetailRecords.Add(recordToInsert);
+                }
+                else
+                {
+                    await _context.CallDetailRecords.AddAsync(recordToInsert, cancellationToken);
+
+                }
+            }
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return duplicateCallDetailRecords;
         }
     }
 }

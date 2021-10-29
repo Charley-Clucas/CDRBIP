@@ -1,4 +1,4 @@
-﻿using CDRBIP.Modules.CallDetailRecordManagement.Application.CallDetailRecord;
+﻿using CDRBIP.Modules.CallDetailRecordManagement.Infrastructure.Services;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Quartz;

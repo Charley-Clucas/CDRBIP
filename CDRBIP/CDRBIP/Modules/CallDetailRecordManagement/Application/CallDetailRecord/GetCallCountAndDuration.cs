@@ -1,5 +1,4 @@
-﻿using CDRBIP.Modules.CallDetailRecordManagement.Application.Generic;
-using CDRBIP.Modules.CallDetailRecordManagement.Domain;
+﻿using CDRBIP.Modules.CallDetailRecordManagement.Domain;
 using CDRBIP.Modules.CallDetailRecordManagement.Domain.Dtos;
 using MediatR;
 using System.Collections.Generic;
@@ -10,24 +9,24 @@ namespace CDRBIP.Modules.CallDetailRecordManagement.Application.CallDetailRecord
 {
     public class GetCallCountAndDuration
     {
-        public class Query : IRequest<IEnumerable<CallCountAndDurationDto>>
+        public class Query : IRequest<List<CallCountAndDurationDto>>
         {
             public CallType? CallType { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, IEnumerable<CallCountAndDurationDto>>
+        public class Handler : IRequestHandler<Query, List<CallCountAndDurationDto>>
         {
-            private readonly IUnitOfWork _unitOfWork;
+            private readonly ICallDetailRecordRepository _callDetailRecordRepository;
 
-            public Handler(IUnitOfWork unitOfWork)
+            public Handler(ICallDetailRecordRepository callDetailRecordRepository)
             {
-                _unitOfWork = unitOfWork;
+                _callDetailRecordRepository = callDetailRecordRepository;
             }
 
-            public async Task<IEnumerable<CallCountAndDurationDto>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<List<CallCountAndDurationDto>> Handle(Query request, CancellationToken cancellationToken)
             {
 
-                return await _unitOfWork.CallDetailRecords.GetCallCountAndDuration(request.CallType, cancellationToken);
+                return await _callDetailRecordRepository.GetCallCountAndDuration(request.CallType, cancellationToken);
             }
         }
     }

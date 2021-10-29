@@ -1,5 +1,4 @@
-﻿using CDRBIP.Modules.CallDetailRecordManagement.Application.Generic;
-using CDRBIP.Modules.CallDetailRecordManagement.Domain;
+﻿using CDRBIP.Modules.CallDetailRecordManagement.Domain;
 using MediatR;
 using System.Collections.Generic;
 using System.Threading;
@@ -9,25 +8,25 @@ namespace CDRBIP.Modules.CallDetailRecordManagement.Application.CallDetailRecord
 {
     public class GetMostExpensiveCalls
     {
-        public class Query : IRequest<IEnumerable<Domain.CallDetailRecord>>
+        public class Query : IRequest<List<Domain.CallDetailRecord>>
         {
             public long CallerId { get; set; }
             public int RequestedAmount { get; set; }
             public CallType? CallType { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, IEnumerable<Domain.CallDetailRecord>>
+        public class Handler : IRequestHandler<Query, List<Domain.CallDetailRecord>>
         {
-            private readonly IUnitOfWork _unitOfWork;
+            private readonly ICallDetailRecordRepository _callDetailRecordRepository;
 
-            public Handler(IUnitOfWork unitOfWork)
+            public Handler(ICallDetailRecordRepository callDetailRecordRepository)
             {
-                _unitOfWork = unitOfWork;
+                _callDetailRecordRepository = callDetailRecordRepository;
             }
 
-            public async Task<IEnumerable<Domain.CallDetailRecord>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<List<Domain.CallDetailRecord>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _unitOfWork.CallDetailRecords.GetMostExpensiveCalls(request.CallerId, request.RequestedAmount, request.CallType, cancellationToken);
+                return await _callDetailRecordRepository.GetMostExpensiveCalls(request.CallerId, request.RequestedAmount, request.CallType, cancellationToken);
             }
         }
     }

@@ -1,6 +1,7 @@
-using CDRBIP.Modules.CallDetailRecordManagement.Application.Generic;
+using CDRBIP.Modules.CallDetailRecordManagement.Application.CallDetailRecord;
 using CDRBIP.Modules.CallDetailRecordManagement.Infrastructure.Database;
 using CDRBIP.Modules.CallDetailRecordManagement.Infrastructure.Processing;
+using CDRBIP.Modules.CallDetailRecordManagement.Infrastructure.Services;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -49,8 +50,9 @@ namespace CDRBIP
             });
 
             services.AddScoped<ICallDetailRecordContext, CallDetailRecordContext>();
+            services.AddScoped<ICallDetailRecordRepository, CallDetailRecordRepository>();
+            services.AddScoped<ICallDetailRecordDownloadService, CallDetailRecordDownloadService>();
             services.AddTransient<RetrieveCDRFileJob>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddMediatR(typeof(Startup).Assembly)
                 .AddDbContext<CallDetailRecordContext>(options => options.UseInMemoryDatabase(databaseName: "CDRBIP"));
 

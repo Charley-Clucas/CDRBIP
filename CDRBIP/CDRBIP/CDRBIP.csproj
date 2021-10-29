@@ -17,9 +17,5 @@
     <PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.3.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Modules\CallDetailRecordManagement\Infrastructure\Repositories\" />
-  </ItemGroup>
-
 
 </Project>

@@ -1,5 +1,4 @@
-﻿using CDRBIP.Modules.CallDetailRecordManagement.Application.Generic;
-using MediatR;
+﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,16 +13,16 @@ namespace CDRBIP.Modules.CallDetailRecordManagement.Application.CallDetailRecord
 
         public class Handler : IRequestHandler<Query, Domain.CallDetailRecord>
         {
-            private readonly IUnitOfWork _unitOfWork;
+            private readonly ICallDetailRecordRepository _callDetailRecordRepository;
 
-            public Handler(IUnitOfWork unitOfWork)
+            public Handler(ICallDetailRecordRepository callDetailRecordRepository)
             {
-                _unitOfWork = unitOfWork;
+                _callDetailRecordRepository = callDetailRecordRepository;
             }
 
             public async Task<Domain.CallDetailRecord> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _unitOfWork.CallDetailRecords.GetByReference(request.Reference, cancellationToken);
+                return await _callDetailRecordRepository.GetByReference(request.Reference, cancellationToken);
             }
         }
     }
