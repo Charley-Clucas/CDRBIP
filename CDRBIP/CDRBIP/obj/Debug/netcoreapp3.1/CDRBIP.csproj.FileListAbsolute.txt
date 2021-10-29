@@ -1,6 +1,4 @@
-C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP\bin\Debug\netcoreapp3.1\appsettings.local.json
 C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP\bin\Debug\netcoreapp3.1\CDRBIP.exe
 C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP\bin\Debug\netcoreapp3.1\CDRBIP.deps.json
 C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP\bin\Debug\netcoreapp3.1\CDRBIP.runtimeconfig.json
@@ -68,3 +66,4 @@ C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP\obj\Debug\netcoreapp3.1\CDRBI
 C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP\obj\Debug\netcoreapp3.1\CDRBIP.dll
 C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP\obj\Debug\netcoreapp3.1\CDRBIP.pdb
 C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP\obj\Debug\netcoreapp3.1\CDRBIP.genruntimeconfig.cache
+C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP\obj\Debug\netcoreapp3.1\CDRBIP.csproj.CopyComplete

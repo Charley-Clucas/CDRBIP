@@ -1,9 +1,7 @@
 C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP.UnitTests\bin\Debug\netcoreapp3.1\CDRBIP.deps.json
 C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP.UnitTests\bin\Debug\netcoreapp3.1\CDRBIP.runtimeconfig.json
 C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP.UnitTests\bin\Debug\netcoreapp3.1\CDRBIP.runtimeconfig.dev.json
-C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP.UnitTests\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP.UnitTests\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP.UnitTests\bin\Debug\netcoreapp3.1\appsettings.local.json
 C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP.UnitTests\bin\Debug\netcoreapp3.1\CDRBIP.exe
 C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP.UnitTests\bin\Debug\netcoreapp3.1\EmptyFiles\archive\empty.7z
 C:\Users\Charley\source\repos\CDRBIP\CDRBIP\CDRBIP.UnitTests\bin\Debug\netcoreapp3.1\EmptyFiles\archive\empty.bz2

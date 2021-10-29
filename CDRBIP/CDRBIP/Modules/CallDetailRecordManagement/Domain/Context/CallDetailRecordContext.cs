@@ -1,4 +1,5 @@
 ﻿using CDRBIP.Modules.CallDetailRecordManagement.Domain;
+using CDRBIP.Modules.CallDetailRecordManagement.Domain.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace CDRBIP.Modules.CallDetailRecordManagement.Infrastructure.Database

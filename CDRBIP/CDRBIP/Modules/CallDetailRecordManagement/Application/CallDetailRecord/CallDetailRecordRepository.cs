@@ -1,7 +1,7 @@
 ﻿using CDRBIP.Modules.CallDetailRecordManagement.Domain;
+using CDRBIP.Modules.CallDetailRecordManagement.Domain.Context;
 using CDRBIP.Modules.CallDetailRecordManagement.Domain.Dtos;
-using CDRBIP.Modules.CallDetailRecordManagement.Infrastructure.Database;
-using CDRBIP.Modules.CallDetailRecordManagement.Infrastructure.Exceptions;
+using CDRBIP.Modules.CallDetailRecordManagement.Domain.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -39,7 +39,7 @@ namespace CDRBIP.Modules.CallDetailRecordManagement.Application.CallDetailRecord
 
             if (callDetailLogToReturn == null)
             {
-                throw new NotFoundException($"No Call Detail Log found with reference = {reference}");
+                throw new NotFoundException(typeof(Domain.CallDetailRecord), reference);
             }
 
             return callDetailLogToReturn;

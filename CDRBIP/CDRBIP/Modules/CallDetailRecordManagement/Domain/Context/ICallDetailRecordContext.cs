@@ -1,9 +1,8 @@
-﻿using CDRBIP.Modules.CallDetailRecordManagement.Domain;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CDRBIP.Modules.CallDetailRecordManagement.Infrastructure.Database
+namespace CDRBIP.Modules.CallDetailRecordManagement.Domain.Context
 {
     public interface ICallDetailRecordContext
     {

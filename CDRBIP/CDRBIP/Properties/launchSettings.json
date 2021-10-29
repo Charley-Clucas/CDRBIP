@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:9361",
+      "applicationUrl": "http://localhost:9362",
       "sslPort": 44312
     }
   },
@@ -14,7 +14,7 @@
       "launchBrowser": true,
       "launchUrl": "api",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Local"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "CDRBIP": {

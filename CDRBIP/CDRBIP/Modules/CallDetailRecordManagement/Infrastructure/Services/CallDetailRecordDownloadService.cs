@@ -7,14 +7,14 @@ namespace CDRBIP.Modules.CallDetailRecordManagement.Infrastructure.Services
     {
         private readonly IConfiguration _configuration;
         private string cdrDirectory;
-        private string cdrBadFileName;
+        private string cdrBadFileDirectory;
 
         public CallDetailRecordDownloadService(IConfiguration configuration)
         {
             _configuration = configuration;
 
             cdrDirectory = _configuration.GetSection("CDRFileConfiguration").GetValue<string>("Directory");
-            cdrBadFileName = _configuration.GetValue<string>("CDRFileConfiguration:BadFileName");
+            cdrBadFileDirectory = _configuration.GetValue<string>("CDRFileConfiguration:BadFileDirectory");
         }
 
         public StreamReader DownloadCallDetailRecordFile()
@@ -33,7 +33,7 @@ namespace CDRBIP.Modules.CallDetailRecordManagement.Infrastructure.Services
 
         public StreamWriter UploadCallDetailRecordFailuresFile()
         {
-            var badFileWriter =  new StreamWriter(cdrDirectory+ "/" + cdrBadFileName);
+            var badFileWriter =  new StreamWriter(cdrBadFileDirectory);
 
             return badFileWriter;
         }
